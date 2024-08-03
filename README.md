@@ -1,3 +1,6 @@
+psql:
+SELECT * FROM contas_pagar_receber; para visualizar os dados do bd
+
 criar bd com docker:
 docker run --name db_fastapidozero -p 5432:5432 -e POSTGRES_DB=db_fastapidozero -e POSTGRES_PASSWORD=162636 -d postgres
 
