@@ -10,10 +10,9 @@ app = FastAPI() # a variável app é um objeto do tipo fastApi
 
 @app.get("/")
 def sou_programador() -> str:
-    return "sou programador"
+    return "/docs para o swagger"
 
 app.include_router(contas_pagar_receber_router.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)
-    
