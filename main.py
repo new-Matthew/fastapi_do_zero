@@ -12,6 +12,7 @@ app = FastAPI() # a variável app é um objeto do tipo fastApi
 def sou_programador() -> str:
     return "/docs para o swagger"
 
+
 app.include_router(contas_pagar_receber_router.router)
 
 if __name__ == "__main__":
