@@ -46,24 +46,24 @@ def test_deve_listar_contas_pagar_receber():
                                {'id':2, 'description': "salario", 'value': 5000.5, 'type': "RECEBER"}
                                ]
     
-def test_deve_atualizar_conta_pagar_receber():
+def test_deve_pegar_por_id():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
     response = client.post("/contas-pagar-receber", json={
-        "description": "Curso de Python",
+        "description": "curso de python",
         "value": 333,
         "type": "PAGAR",
     })
 
-    id_conta_pagar_receber = response.json()['id']
+    id_conta_pagar_receber = response.json()['id'] # erro de id
 
     response_get = client.get(f"/contas-pagar-receber/{id_conta_pagar_receber}")
 
     assert response_get.status_code == 200
     assert response_get.json()['value'] == 333
-    assert response_get.json()['type'] == 'PAGAR'
-    assert response_get.json()['description'] == 'curso de python'
+    assert response_get.json()['type'] == "PAGAR"
+    assert response_get.json()['description'] == "curso de python"
 
 def test_deve_criar_contas_pagar_receber():
     Base.metadata.drop_all(bind=engine)
