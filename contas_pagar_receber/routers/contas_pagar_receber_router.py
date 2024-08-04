@@ -50,7 +50,7 @@ def listar_contas(): #como lista possível retornar mais de um objeto
 
 @router.get("/{id_conta_pagar_receber}", response_model=ContaPagarReceberResponse)
 def obter_conta_por_id(id_conta_pagar_receber: int,
-                       db: Session = Depends(get_db)) -> List[ContaPagarReceberResponse]:
+                       db: Session = Depends(get_db)) -> ContaPagarReceberResponse:
     conta_pagar_receber: ContaPagarReceber = db.query(ContaPagarReceber).get(id_conta_pagar_receber)
     return conta_pagar_receber
 
